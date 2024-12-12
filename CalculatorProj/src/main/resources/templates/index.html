@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .calculator input {
+            width: 90%;
+            height: 40px;
+            font-size: 18px;
+            text-align: right;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid rgb(222, 234, 208);
+            border-radius: 5px;
+        }
+        .calculator button {
+            width: 60px;
+            height: 60px;
+            font-size: 18px;
+            margin: 5px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .calculator button:hover {
+            background-color: rgb(222, 234, 208);
+        }
+        .calculator button:active {
+            background-color: #ccc;
+        }
+        .operator {
+            background-color: #fe9241;
+            color: white;
+        }
+        .equal {
+            background-color: #4caf50;
+            color: white;
+        }
+        .clear {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <form action="/calculate" method="POST">
+            <input type="text" name="expression" id="expression" th:value="${expression}" readonly>
+            
+            <div>
+                <button type="submit" name="digit" value="7">7</button>
+                <button type="submit" name="digit" value="8">8</button>
+                <button type="submit" name="digit" value="9">9</button>
+                <button type="submit" name="operator" value="/">/</button>
+            </div>
+            <div>
+                <button type="submit" name="digit" value="4">4</button>
+                <button type="submit" name="digit" value="5">5</button>
+                <button type="submit" name="digit" value="6">6</button>
+                <button type="submit" name="operator" value="*">*</button>
+            </div>
+            <div>
+                <button type="submit" name="digit" value="1">1</button>
+                <button type="submit" name="digit" value="2">2</button>
+                <button type="submit" name="digit" value="3">3</button>
+                <button type="submit" name="operator" value="-">-</button>
+            </div>
+            <div>
+                <button type="submit" name="digit" value="0">0</button>
+                <button type="submit" name="digit" value=".">.</button>
+                <button type="submit" name="equal" value="=" class="equal">=</button>
+                <button type="submit" name="operator" value="+">+</button>
+            </div>
+            <div>
+                <button type="submit" name="clear" value="C" class="clear">C</button>
+				<button type="submit" name="operator" value="(">(</button>
+				<button type="submit" name="operator" value=")">)</button>
+            </div>
+        </form>
+        <div>
+            <h3>Result: <span th:text="${result}"></span></h3>
+        </div>
+    </div>
+</body>
+</html>
